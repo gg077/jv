@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data ophalen met FETCH en Promises</title>
+</head>
+<body>
+<h1>Data ophalen met Async/await</h1>
+<div id="output">De opgehaalde data verschijnt hieronder:</div>
+
+<script>
+    async function haalDataOp(){
+        try{
+            let response = await fetch("https://swapi.dev/api/films");
+            if (!response){
+                throw new Error(`HTTP FOUT, status:${response.status}`);
+            }
+            let data = await response.json();
+            console.log(data);
+            let outputHTML=`
+            <h2>Ophalen API DATA</h2>
+            <ul>
+            `;
+            data.result.forEach(film => {
+                outputHTML +=`
+                <li>
+                <strong>Titel:</strong>${film.title}
+                </li>
+`
+            })
+            outputHTML +=`
+            </UL>
+            `;
+            document.getElementById("output").innerHTML = outputHTML;
+        }catch(error){
+            document.getElementById("output").textContent="Er is een fout opgetreden bij het ophalen van de gegevens.";
+        }
+    }
+    haalDataOp();
+</script>
+
+</body>
+</html>
