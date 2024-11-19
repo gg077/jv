@@ -1,0 +1,74 @@
+/*vnf hier mobile first*/
+.josefin-sans{
+    font-family: "josefin Sans", sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.heebo{
+    font-family: "Heebo", sans-serif;
+    font-size: 16px;
+}
+/*navbar*/
+.navbar{
+    background: rgba(255,255,255,0);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+/*navbar scrolled*/
+.navbar.scrolled{
+    background: #ffa07a;
+    backdrop-filter: none;
+}
+.dropdown-toggle::after{
+    content: none;
+}
+
+/*hambuerger menu styling*/
+.navbar-toggler{
+    border: 0px;
+}
+.navbar-toggler: focus{
+    outline: none;
+    box-shadow: none;
+}
+
+/*try for free*/
+.btn-custom{
+    border: 1px solid transparent;
+    padding: 10px 20px;
+    transition: background-color 1s ease, border-color 1s ease;
+}
+.btn-custom:hover{
+    background-color: transparent !important;
+    color:white;
+    border-color: white;
+}
+
+/*hero section*/
+#hero-section{
+    padding-top: 70px;
+    background-image:url("../img/banner-bg (1).png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    min-height: 100vh;
+    position: relative;
+
+}
+/*media queries*/
+@media (min-width: 992px) {
+    .navbar{
+        border-bottom: none;
+        backdrop-filter: none;
+
+    }
+    .josefin-sans{
+        font-size: 75;kpx;
+    }
+}

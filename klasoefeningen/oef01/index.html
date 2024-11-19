@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Voedingsdagboek</title>
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <!-- Titel van de applicatie -->
+    <h1 class="text-center mb-4">Voedingsdagboek</h1>
+</div>
+
+<div class="card p-4 shadow-sm mb-4">
+    <!-- Persoonlijke gegevens sectie -->
+    <h4>Persoonlijke Gegevens</h4>
+    <div class="row g-2">
+        <!-- Geslacht invoerveld -->
+        <div class="col-md-4">
+            <label>Geslacht:</label><br>
+            <input type="radio" name="geslacht" id="man" value="man"> Man
+            <input type="radio" name="geslacht" id="vrouw" value="vrouw"> Vrouw
+        </div>
+        <!-- Leeftijd -->
+        <div class="col-md-4">
+            <input type="number" id="leeftijd" class="form-control" placeholder="Leeftijd" min="1">
+        </div>
+        <!-- Lengte -->
+        <div class="col-md-4">
+            <input type="number" id="lengte" class="form-control" placeholder="Lengte (cm)" min="100">
+        </div>
+        <!-- Gewicht -->
+        <div class="col-md-4">
+            <input type="number" id="gewicht" class="form-control" placeholder="Gewicht (kg)" min="30">
+        </div>
+        <!-- Activiteitsniveau -->
+        <div class="col-md-4">
+            <select id="activiteitsniveau" class="form-select">
+                <option value="1.2">Sedentair (weinig beweging)</option>
+                <option value="1.375">Licht actief (1-3 dagen training)</option>
+                <option value="1.55">Matig actief (3-5 dagen training)</option>
+                <option value="1.725">Zeer actief (6-7 dagen training)</option>
+                <option value="1.9">Extreem actief (zware training)</option>
+            </select>
+        </div>
+        <!-- Knop om caloriebehoefte te berekenen -->
+        <button id="bereken-behoefte" class="btn btn-success mt-3 w-100">
+            Bereken Dagelijkse Caloriebehoefte
+        </button>
+        <!-- Resultaat -->
+        <div id="calorie-behoefte" class="mt-3 pb-3"></div>
+    </div>
+</div>
+
+<div class="card p-4 shadow-sm">
+    <!-- Maaltijd toevoegen -->
+    <h4>Voeg een Maaltijd Toe</h4>
+    <div class="row g-2">
+        <!-- Maaltijdnaam -->
+        <div class="col-md-4">
+            <input type="text" id="maaltijd-naam" class="form-control" placeholder="Maaltijdnaam">
+        </div>
+        <!-- Calorieën -->
+        <div class="col-md-2">
+            <input type="number" id="calorieën" class="form-control" placeholder="Calorieën" min="0">
+        </div>
+        <!-- Koolhydraten -->
+        <div class="col-md-2">
+            <input type="number" id="koolhydraten" class="form-control" placeholder="Koolhydraten (g)" min="0">
+        </div>
+        <!-- Vetten -->
+        <div class="col-md-2">
+            <input type="number" id="vetten" class="form-control" placeholder="Vetten (g)" min="0">
+        </div>
+        <!-- Eiwitten -->
+        <div class="col-md-2">
+            <input type="number" id="eiwitten" class="form-control" placeholder="Eiwitten (g)" min="0">
+        </div>
+    </div>
+    <!-- Knop om maaltijd toe te voegen -->
+    <button id="voeg-maaltijd-toe" class="btn btn-primary mt-3 w-100">
+        Voeg Maaltijd Toe
+    </button>
+    <!-- Lijst met maaltijden -->
+    <ul id="maaltijd-lijst" class="list-group mt-3"></ul>
+    <!-- Totale waarden -->
+    <div id="totale-waarden" class="mt-3"></div>
+</div>
+
+<script>
+    // Array om alle maaltijden op te slaan
+    const maaltijden = [];
+
+    // Functie om caloriebehoefte te berekenen
+    document.getElementById('bereken-behoefte').addEventListener("click", function () {
+        // Stap 1: Haal waarden op
+        const geslachtInputs = document.getElementsByName('geslacht');
+        let geslachtspersoon = null;
+
+        // Controleer welk geslacht is geselecteerd
+        for (let input of geslachtInputs) {
+            if (input.checked) {
+                geslachtspersoon = input.value;
+                break;
+            }
+        }
+
+        const leeftijd = parseInt(document.getElementById("leeftijd").value);
+        const lengte = parseFloat(document.getElementById("lengte").value);
+        const gewicht = parseFloat(document.getElementById("gewicht").value);
+        const activiteitsniveau = parseFloat(document.getElementById("activiteitsniveau").value);
+
+        // Stap 2: Validatie van de invoer
+        if (!geslachtspersoon || isNaN(leeftijd) || isNaN(lengte) || isNaN(gewicht) || isNaN(activiteitsniveau)) {
+            alert("Vul alle velden in!");
+            return;
+        }
+
+        // Stap 3: Bereken BMR (Basal Metabolic Rate)
+        let BMR;
+        if (geslachtspersoon === "man") {
+            BMR = 88.362 + (13.397 * gewicht) + (4.799 * lengte) - (5.677 * leeftijd);
+        } else {
+            BMR = 447.593 + (9.247 * gewicht) + (3.098 * lengte) - (4.330 * leeftijd);
+        }
+
+        // Stap 4: Bereken TDEE (Total Daily Energy Expenditure)
+        const TDEE = BMR * activiteitsniveau;
+
+        // Stap 5: Toon het resultaat
+        document.getElementById("calorie-behoefte").innerHTML = `Je dagelijkse caloriebehoefte is: ${TDEE.toFixed(2)} kcal.`;
+    });
+
+    // Functie om maaltijden toe te voegen
+    document.getElementById("voeg-maaltijd-toe").addEventListener("click", function () {
+        // Stap 1: Haal waarden op
+        const naam = document.getElementById("maaltijd-naam").value;
+        const calorieën = parseFloat(document.getElementById("calorieën").value);
+        const koolhydraten = parseFloat(document.getElementById("koolhydraten").value);
+        const vetten = parseFloat(document.getElementById("vetten").value);
+        const eiwitten = parseFloat(document.getElementById("eiwitten").value);
+
+        // Stap 2: Validatie van de invoer
+        if (!naam || isNaN(calorieën) || isNaN(koolhydraten) || isNaN(vetten) || isNaN(eiwitten)) {
+            alert("Vul alle velden in!");
+            return;
+        }
+
+        // Stap 3: Voeg maaltijd toe aan de array
+        maaltijden.push({
+            maaltijdnaam: naam,
+            calorieen: calorieën,
+            koolhydraten: koolhydraten,
+            vetten: vetten,
+            eiwitten: eiwitten,
+        });
+
+        // Stap 4: Update de weergave
+        updateMaaltijdWeergave();
+        updateTotaleWaarden();
+
+        // Stap 5: Maak de velden leeg
+        document.getElementById("maaltijd-naam").value = "";
+        document.getElementById("calorieën").value = "";
+        document.getElementById("koolhydraten").value = "";
+        document.getElementById("vetten").value = "";
+        document.getElementById("eiwitten").value = "";
+    });
+
+    // Functie om de lijst met maaltijden te updaten
+    function updateMaaltijdWeergave() {
+        const maaltijdLijst = document.getElementById('maaltijd-lijst');
+        maaltijdLijst.innerHTML = ""; // Reset de lijst
+
+        maaltijden.forEach(maaltijd => {
+            const listItem = document.createElement('li');
+            listItem.classList.add("list-group-item");
+            listItem.innerHTML = `
+                ${maaltijd.maaltijdnaam}:
+                ${maaltijd.calorieen} kcal, ${maaltijd.koolhydraten}g koolhydraten,
+                ${maaltijd.vetten}g vetten, ${maaltijd.eiwitten}g eiwitten
+            `;
+            maaltijdLijst.appendChild(listItem);
+        });
+    }
+
+    // Functie om de totale voedingswaarden te berekenen en weer te geven
+    function updateTotaleWaarden() {
+        const totaal = maaltijden.reduce((acc, maaltijd) => ({
+            calorieen: acc.calorieen + maaltijd.calorieen,
+            koolhydraten: acc.koolhydraten + maaltijd.koolhydraten,
+            vetten: acc.vetten + maaltijd.vetten,
+            eiwitten: acc.eiwitten + maaltijd.eiwitten
+        }), { calorieen: 0, koolhydraten: 0, vetten: 0, eiwitten: 0 });
+
+        document.getElementById('totale-waarden').innerHTML = `
+            <h5 class="text-center">Totaal: ${totaal.calorieen} kcal,
+            ${totaal.koolhydraten}g koolhydraten, ${totaal.vetten}g vetten,
+            ${totaal.eiwitten}g eiwitten</h5>
+        `;
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
