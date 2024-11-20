@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Oefening: Kolomhoogte corrigeren</title>
+</head>
+<body>
+<div class="container mt-5">
+    <!-- Hoofdrow met 2 kolommen -->
+    <div class="row">
+        <!-- Kolom 1 -->
+        <div class="col-12 col-lg-6 bg-primary text-white text-center border border-danger">
+            <!-- Eerste rij in Kolom 1 -->
+            <div class="row">
+                <div class="col-12 bg-primary text-white text-center border border-danger">
+                    <h1>deze 1</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam consequatur fugiat fugit labore nemo neque odit sed totam.</p>
+                </div>
+            </div>
+
+            <!-- Tweede rij in Kolom 1 -->
+            <div class="row">
+                <div class="col-6 bg-primary text-white text-center border border-danger">
+                    <h1>deze 2</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet cumque dolorem laudantium obcaecati rem, rerum totam!</p>
+                </div>
+                <div class="col-6 bg-primary text-white text-center border border-danger">
+                    <h1>deze 3</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet debitis eius harum porro praesentium, reprehenderit saepe sunt voluptate!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kolom 2 -->
+        <div class="col-12 col-lg-6 bg-secondary text-white text-center border border-danger d-flex flex-column p-0">
+            <!-- Eerste rij in Kolom 2: 2/3 hoogte -->
+            <div class="flex-grow-3 bg-secondary text-white text-center border border-danger d-flex align-items-center justify-content-center">
+                <div><h1>deze 4</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci at consequatur deleniti error,
+                        esse eveniet illum ipsam.</p></div>
+            </div>
+            <!-- Tweede rij in Kolom 2: 1/3 hoogte -->
+            <div class="flex-grow-1 bg-secondary text-white text-center border border-danger d-flex align-items-center justify-content-center">
+                <div><h1>deze 5</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur commodi consequatur
+                        fugit, illum in incidunt iusto magni maiores nihil non officiis.</p></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
