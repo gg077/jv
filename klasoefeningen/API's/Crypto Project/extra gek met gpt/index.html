@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Market Overview</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #181818;
+        }
+        .navbar-brand {
+            color: #ffffff !important;
+        }
+        .crypto-table th {
+            background-color: #181818;
+            color: white;
+        }
+        .crypto-table tbody tr:hover {
+            background-color: #e8e8e8;
+        }
+        .watchlist, .portfolio {
+            border: 1px solid #dee2e6;
+            background-color: white;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Crypto Market</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#watchlist">Watchlist</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#portfolio">Portfolio</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Sectie -->
+<section class="py-5 bg-dark text-white text-center">
+    <div class="container">
+        <h1 class="fw-bold">Cryptocurrency Marktgegevens</h1>
+        <p class="lead">Bekijk actuele gegevens over de meest populaire cryptocurrencies.</p>
+    </div>
+</section>
+
+<!-- Zoek en Filters -->
+<div class="container my-4">
+    <div class="row align-items-center">
+        <div class="col-md-6 mb-3 mb-md-0">
+            <input type="text" id="cryptoSearch" class="form-control" placeholder="Zoek naar een cryptocurrency...">
+        </div>
+        <div class="col-md-3">
+            <select id="sortOption" class="form-select">
+                <option value="rank" selected>Sorteren op Rang</option>
+                <option value="price">Sorteren op Prijs</option>
+                <option value="marketCap">Sorteren op Marktkapitalisatie</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <button id="applyFilter" class="btn btn-primary w-100">Toepassen</button>
+        </div>
+    </div>
+</div>
+
+<!-- Cryptocurrency Tabel -->
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-striped table-hover crypto-table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Naam</th>
+                <th>Symbool</th>
+                <th>Prijs</th>
+                <th>24u Verandering</th>
+                <th>Marktkapitalisatie</th>
+                <th>Volume (24u)</th>
+                <th>Acties</th>
+            </tr>
+            </thead>
+            <tbody id="cryptoResults">
+            <!-- Dynamische resultaten worden hier toegevoegd -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Watchlist -->
+<div class="container">
+    <h2 id="watchlist" class="mb-4">Watchlist</h2>
+    <ul id="watchlistItems" class="list-group">
+        <!-- Watchlist-items worden hier toegevoegd -->
+    </ul>
+</div>
+
+<!-- Portfolio -->
+<div class="container">
+    <h2 id="portfolio" class="mb-4">Portfolio</h2>
+    <ul id="portfolioItems" class="list-group mb-4">
+        <!-- Portfolio-items worden hier toegevoegd -->
+    </ul>
+    <canvas id="portfolioChart" width="400" height="200"></canvas>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-3">
+    <div class="container text-center">
+        <p class="mb-0">Crypto Market &copy; 2024. Powered by CoinCap API.</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Axios voor API-aanroepen -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    const cryptoResults = document.getElementById("cryptoResults");
+    const watchlistItems = document.getElementById("watchlistItems");
+    const portfolioItems = document.getElementById("portfolioItems");
+    const portfolioData = [];
+
+    // Dynamische Tabeldata
+    async function loadCryptoData() {
+        try {
+            const response = await axios.get("https://api.coincap.io/v2/assets");
+            const data = response.data.data;
+            cryptoResults.innerHTML = "";
+            data.forEach((coin, index) => {
+                cryptoResults.innerHTML += `
+                    <tr>
+                        <td>${coin.rank}</td>
+                        <td>${coin.name}</td>
+                        <td>${coin.symbol}</td>
+                        <td>$${parseFloat(coin.priceUsd).toFixed(2)}</td>
+                        <td class="${coin.changePercent24Hr >= 0 ? 'text-success' : 'text-danger'}">
+                            ${parseFloat(coin.changePercent24Hr).toFixed(2)}%
+                        </td>
+                        <td>$${(coin.marketCapUsd / 1e9).toFixed(2)}B</td>
+                        <td>$${(coin.volumeUsd24Hr / 1e9).toFixed(2)}B</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm" onclick="addToWatchlist('${coin.name}', '${coin.symbol}')">⭐</button>
+                            <button class="btn btn-success btn-sm" onclick="addToPortfolio('${coin.name}', '${coin.symbol}', ${parseFloat(coin.priceUsd)})">➕</button>
+                        </td>
+                    </tr>`;
+            });
+        } catch (error) {
+            console.error("Error fetching crypto data:", error);
+        }
+    }
+
+    // Voeg munten toe aan de watchlist
+    function addToWatchlist(name, symbol) {
+        const item = `<li class="list-group-item d-flex justify-content-between align-items-center">${name} (${symbol}) <button class="btn btn-danger btn-sm" onclick="removeItem(this)">🗑️</button></li>`;
+        watchlistItems.innerHTML += item;
+    }
+
+    // Voeg munten toe aan portfolio
+    function addToPortfolio(name, symbol, price) {
+        const quantity = prompt(`Hoeveel ${name} wil je kopen?`);
+        if (!quantity || isNaN(quantity)) {
+            alert("Ongeldig aantal!");
+            return;
+        }
+        const totalValue = (price * quantity).toFixed(2);
+        portfolioData.push(parseFloat(totalValue));
+        const item = `<li class="list-group-item d-flex justify-content-between align-items-center">${name} (${symbol}): ${quantity} @ $${price} = $${totalValue} <button class="btn btn-danger btn-sm" onclick="removeItem(this)">🗑️</button></li>`;
+        portfolioItems.innerHTML += item;
+        updatePortfolioChart();
+    }
+
+    // Verwijder item uit lijst
+    function removeItem(button) {
+        button.parentElement.remove();
+    }
+
+    // Update grafiek
+    function updatePortfolioChart() {
+        const ctx = document.getElementById('portfolioChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: portfolioData.map((_, index) => `Transactie ${index + 1}`),
+                datasets: [{
+                    label: 'Portfolio Waarde ($)',
+                    data: portfolioData,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    fill: true,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)'
+                }]
+            }
+        });
+    }
+
+    // Laad de data bij het opstarten
+    loadCryptoData();
+</script>
+</body>
+</html>

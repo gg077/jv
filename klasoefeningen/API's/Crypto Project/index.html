@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Coin Search Engine</title>
+    <!-- Bootstrap CSS voor styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Axios voor API-aanroepen -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<!-- Hero Sectie -->
+<section class="bg-dark text-white text-center py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Crypto Coin Search</h1>
+        <p class="lead">Blijf op de hoogte van de laatste prijzen en trends van cryptocurrencies.</p>
+    </div>
+</section>
+
+<!-- Zoek Formulier -->
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Formulier voor de zoekfunctie -->
+            <form id="cryptoForm" class="d-flex">
+                <input type="text" id="cryptoSearch" class="form-control me-2" placeholder="Zoek naar een cryptocurrency..." required>
+                <!-- Submitknop om de zoekopdracht te activeren -->
+                <button type="submit" class="btn btn-primary">Zoeken</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Crypto Resultaten -->
+<div class="container">
+    <!-- Header boven de resultaten -->
+    <div class="row">
+        <div class="col">
+            <h2 class="mb-4">Resultaten</h2>
+        </div>
+    </div>
+
+    <!-- Dynamische Tabel -->
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>#</th> <!-- Rang van de munt -->
+                <th>Naam</th> <!-- Naam van de munt -->
+                <th>Symbool</th> <!-- Symbool (bijv. BTC) -->
+                <th>Prijs (USD)</th> <!-- Prijs in Amerikaanse dollars -->
+                <th>24u Verandering</th> <!-- Percentage verandering in 24 uur -->
+                <th>Marktkapitalisatie</th> <!-- Totale marktwaarde -->
+            </tr>
+            </thead>
+            <tbody id="cryptoResults">
+            <!-- Dynamische resultaten worden hier toegevoegd -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-center text-white py-3 mt-5">
+    <p class="mb-0">Crypto Coin Search &copy; 2024. Powered by CoinCap API.</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script>
+    // Selecteer het formulier en het inputveld
+    const cryptoForm = document.getElementById("cryptoForm");
+    const inputfield = document.getElementById("cryptoSearch");
+
+    // Voeg een 'submit'-eventlistener toe aan het formulier
+    cryptoForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Voorkomt dat het formulier de pagina vernieuwt
+
+        const zoekterm = inputfield.value.trim(); // Haal de ingevoerde waarde op
+
+        // Controleer of de zoekterm leeg is
+        if (!zoekterm) {
+            alert("VOER EEN ZOEKTERM IN"); // Waarschuwing bij een lege zoekopdracht
+            return;
+        }
+
+        // Roep de functie aan om gegevens op te halen
+        haalDataOp(zoekterm);
+    });
+
+    // Functie om data op te halen via de CoinCap API
+    async function haalDataOp(zoekterm) {
+        try {
+            // Maak een API-aanroep om gegevens op te halen
+            const response = await axios.get(`https://api.coincap.io/v2/assets/${zoekterm}`);
+            const data = response.data; // Sla de data op
+            toonResultaten(data); // Toon de resultaten in de tabel
+        } catch (error) {
+            // Foutafhandeling: Toon een melding als de gegevens niet kunnen worden opgehaald
+            console.error("FOUT BIJ HET OPHALEN VAN GEGEVENS", error);
+            document.getElementById("cryptoResults").innerHTML = `
+                <tr><td colspan="6" class="text-center">Fout bij ophalen van gegevens. Probeer opnieuw.</td></tr>
+            `;
+        }
+    }
+
+    // Functie om de resultaten in de tabel te tonen
+    function toonResultaten(data) {
+        const cryptoResults = document.getElementById("cryptoResults"); // Selecteer de tabel
+        cryptoResults.innerHTML = ""; // Maak de tabel leeg voordat je nieuwe gegevens toevoegt
+
+        // Controleer of er gegevens beschikbaar zijn
+        if (!data || !data.data) {
+            cryptoResults.innerHTML = `<tr><td colspan="6" class="text-center">Geen resultaten gevonden</td></tr>`;
+            return;
+        }
+
+        // Haal de coin-data op uit de API-response
+        const coin = data.data;
+
+        // Dynamisch een nieuwe rij toevoegen met de gegevens
+        const tableRow = `
+            <tr>
+                <td>${coin.rank}</td> <!-- Rang -->
+                <td>${coin.name}</td> <!-- Naam -->
+                <td>${coin.symbol}</td> <!-- Symbool -->
+                <td>$${parseFloat(coin.priceUsd).toFixed(2)}</td> <!-- Prijs in USD -->
+                <td class="${coin.changePercent24Hr >= 0 ? 'text-success' : 'text-danger'}">
+                    ${parseFloat(coin.changePercent24Hr).toFixed(2)}%
+                </td> <!-- Verandering in 24 uur -->
+                <td>$${(coin.marketCapUsd / 1e9).toFixed(2)}B</td> <!-- Marktkapitalisatie -->
+            </tr>
+        `;
+
+        // Voeg de rij toe aan de tabel
+        cryptoResults.innerHTML = tableRow;
+    }
+</script>
+</body>
+</html>
