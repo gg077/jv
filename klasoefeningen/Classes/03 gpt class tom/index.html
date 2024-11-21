@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmcollectie Beheren</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container my-5">
+    <h2>Filmcollectie Beheren</h2>
+    <!-- Formulier voor het toevoegen van een film -->
+    <form id="filmForm" class="mb-4">
+        <div class="mb-3">
+            <label for="title" class="form-label">Titel</label>
+            <!-- Input veld voor de titel van de film -->
+            <input type="text" class="form-control" id="title" required>
+        </div>
+        <div class="mb-3">
+            <label for="director" class="form-label">Regisseur</label>
+            <!-- Input veld voor de naam van de regisseur -->
+            <input type="text" class="form-control" id="director" required>
+        </div>
+        <div class="mb-3">
+            <label for="rating" class="form-label">IMDB Score</label>
+            <!-- Input veld voor de IMDB-score -->
+            <input type="number" step="0.1" class="form-control" id="rating" required>
+        </div>
+        <div class="mb-3">
+            <label for="duur" class="form-label">Duration</label>
+            <!-- Input veld voor de duur van de film -->
+            <input type="number" step="0.1" class="form-control" id="duur" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Film Toevoegen</button>
+    </form>
+
+    <h3>Filmcollectie</h3>
+    <!-- Dynamische lijst waarin de films worden toegevoegd -->
+    <ul id="filmList" class="list-group"></ul>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Definieer de basisklasse 'Film'
+    class Film {
+        constructor(title, director, rating) {
+            this.titel = title; // Titel van de film
+            this.regisseur = director; // Regisseur van de film
+            this.score = rating; // IMDB-score van de film
+        }
+        // Geen beschrijf() methode toegevoegd in de Film-klasse
+    }
+
+    // Definieer de subklasse 'Serie' die overerft van 'Film'
+    class Serie extends Film {
+        constructor(title, director, rating, duration) {
+            super(title, director, rating); // Roep de constructor van de 'Film' class aan
+            this.duration = duration; // Eigenschap voor de duur van de serie
+        }
+         // Methode om een beschrijving van de serie te genereren
+         // @returns {string} Beschrijving van de serie
+        beschrijf() {
+            return `De korte Film '${this.titel}', geregisseerd door ${this.regisseur}, heeft een score van ${parseFloat(this.score).toFixed(1)} en duurt ${this.duration} minuten.`;
+        }
+    }
+
+    // Eventlistener voor het formulier
+    document.getElementById("filmForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Voorkom dat de pagina herlaadt bij het verzenden van het formulier
+
+        // Haal de gegevens op uit de invoervelden
+        const filmtitel = document.getElementById("title").value; // Waarde van het titelveld
+        const filmregisseur = document.getElementById("director").value; // Waarde van het regisseurveld
+        const filmscore = document.getElementById("rating").value; // Waarde van de IMDB-score
+        const filmduur = document.getElementById("duur").value; // Waarde van de duur
+
+        // Maak een nieuw object van de Serie-klasse
+        const nieuwefilm = new Serie(filmtitel, filmregisseur, filmscore, filmduur);
+
+        // Voeg de nieuwe serie toe aan de lijst in de DOM
+        const filmlist = document.getElementById("filmList"); // Haal de lijst op waar de films worden toegevoegd
+        const filmitem = document.createElement("li"); // Maak een nieuw lijstitem aan
+        filmitem.classList.add("list-group-item"); // Voeg Bootstrap-styling toe
+        filmitem.textContent = nieuwefilm.beschrijf(); // Zet de beschrijving in het lijstitem
+
+        filmlist.appendChild(filmitem); // Voeg het lijstitem toe aan de lijst
+
+        // Reset het formulier na het toevoegen
+        document.getElementById("filmForm").reset();
+    });
+</script>
+</body>
+</html>

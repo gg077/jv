@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Registratie</title>
+    <!-- Bootstrap CSS voor styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Verwijzing naar het externe script -->
+    <script src="./index.js" defer></script>
+</head>
+<body>
+<div class="container my-5">
+    <h2>Voeg een nieuwe auto toe</h2>
+    <!-- Formulier voor het toevoegen van een auto -->
+    <form id="autoForm" class="mb-4">
+        <div class="mb-3">
+            <label for="model" class="form-label">Model</label>
+            <input type="text" class="form-control" id="model" required>
+        </div>
+        <div class="mb-3">
+            <label for="bouwjaar" class="form-label">Bouwjaar</label>
+            <input type="datetime-local" class="form-control" id="bouwjaar" required>
+        </div>
+        <div class="mb-3">
+            <label for="type" class="form-label">Type</label>
+            <input type="text" class="form-control" id="type" required>
+        </div>
+        <div class="mb-3">
+            <label for="versnelling" class="form-label">Versnelling</label>
+            <select class="form-select" id="versnelling" required>
+                <option value="automatisch">Automatisch</option>
+                <option value="manueel">Manueel</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="aandrijving" class="form-label">Aandrijving</label>
+            <select class="form-select" id="aandrijving" required>
+                <option value="gas">Gas</option>
+                <option value="benzine">Benzine</option>
+                <option value="diesel">Diesel</option>
+                <option value="elektrisch">Elektrisch</option>
+            </select>
+        </div>
+        <!-- Knop om een nieuwe auto toe te voegen -->
+        <button type="submit" class="btn btn-primary">Toevoegen</button>
+    </form>
+
+    <h3>Geregistreerde Auto's</h3>
+    <!-- Lijst waarin geregistreerde auto's worden weergegeven -->
+    <ul id="autoList" class="list-group"></ul>
+</div>
+
+<script>
+    /**
+     * Stap 1: Definieer de basisklasse
+     * - Bepaal de gedeelde eigenschappen en methoden die relevant zijn voor alle objecten van dit type.
+     */
+    class Voertuig {
+        /**
+         * Constructor voor de Voertuig klasse.
+         * @param {string} model - Model van het voertuig.
+         * @param {string} bouwjaar - Bouwjaar van het voertuig.
+         */
+        constructor(model, bouwjaar) {
+            this.model = model; // Modelnaam van het voertuig
+            this.bouwjaar = bouwjaar; // Bouwjaar van het voertuig
+        }
+
+        // Methode: Simuleert dat het voertuig rijdt
+        rijden() {
+            return `${this.model} is aan het rijden.`;
+        }
+
+        // Methode: Simuleert dat het voertuig start
+        starten() {
+            return `${this.model} is gestart.`;
+        }
+
+        // Methode: Simuleert dat het voertuig stopt
+        stoppen() {
+            return `${this.model} is gestopt.`;
+        }
+    }
+
+    /**
+     * Stap 2: Creëer een specifieke klasse die overerft van de basisklasse
+     * - Voeg extra eigenschappen en methoden toe die uniek zijn voor deze specifieke klasse.
+     */
+    class Auto extends Voertuig {
+        /**
+         * Constructor voor de Auto klasse.
+         * @param {string} model - Model van de auto.
+         * @param {string} bouwjaar - Bouwjaar van de auto.
+         * @param {string} type - Type van de auto (bijv. Sedan, SUV).
+         * @param {string} versnelling - Versnellingssysteem (automatisch/manueel).
+         * @param {string} aandrijving - Aandrijvingstype (gas/benzine/diesel/elektrisch).
+         */
+        constructor(model, bouwjaar, type, versnelling, aandrijving) {
+            super(model, bouwjaar); // Roept de constructor van de Voertuig klasse aan
+            this.type = type; // Type auto (bijv. SUV)
+            this.versnelling = versnelling; // Versnellingstype
+            this.aandrijving = aandrijving; // Aandrijvingstype
+        }
+
+        // Methode: Geeft een beschrijving van de auto
+        beschrijf() {
+            return `Model: ${this.model}, Bouwjaar: ${this.bouwjaar}, Type: ${this.type}, Versnelling: ${this.versnelling}, Aandrijving: ${this.aandrijving}`;
+        }
+    }
+
+    /**
+     * Stap 3: Maak functies voor interactie met de DOM
+     * - Voeg objecten toe aan een lijst of visualiseer ze op een andere manier.
+     */
+
+    // Event listener voor het formulier
+    document.getElementById("autoForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Voorkom dat de pagina wordt vernieuwd bij het verzenden van het formulier
+
+        // Stap 4: Haal de waarden op uit het formulier
+        const model = document.getElementById("model").value; // Waarde van het modelveld
+        const bouwjaar = document.getElementById("bouwjaar").value; // Waarde van het bouwjaarveld
+        const type = document.getElementById("type").value; // Waarde van het typeveld
+        const versnelling = document.getElementById("versnelling").value; // Waarde van het versnellingsveld
+        const aandrijving = document.getElementById("aandrijving").value; // Waarde van het aandrijvingsveld
+
+        // Stap 5: Maak een nieuw object aan
+        const nieuweAuto = new Auto(model, bouwjaar, type, versnelling, aandrijving);
+
+        // Stap 6: Voeg het object toe aan de DOM
+        const autoList = document.getElementById("autoList"); // Selecteer de lijstcontainer
+        const autoItem = document.createElement("li"); // Maak een nieuw lijstitem
+        autoItem.classList.add("list-group-item"); // Voeg Bootstrap-styling toe
+        autoItem.textContent = nieuweAuto.beschrijf(); // Vul het lijstitem met de beschrijving van de auto
+        autoList.appendChild(autoItem); // Voeg het lijstitem toe aan de lijst
+
+        // Stap 7: Reset het formulier na toevoegen
+        document.getElementById("autoForm").reset(); // Reset alle invoervelden van het formulier
+    });
+
+    /**
+     * Stap 8: Test en debug je code
+     * - Controleer of objecten correct worden aangemaakt.
+     * - Controleer of de weergave in de DOM werkt zoals verwacht.
+     */
+</script>
+</body>
+</html>
