@@ -12,37 +12,37 @@
 
 </head>
 <body>
-<!-- Bovenste balk boven de navigatie -->
-<div class="top-bar d-flex align-items-stretch justify-content-between" style="height: 60px; background-color: #fff; padding-left: 50px; padding-right: 60px;">
+<!--bovenbalk-->
+<div class="top-bar d-flex flex-wrap align-items-center justify-content-between" style="background-color: #fff; padding: 10px 20px;">
     <!-- Linkerkant: Contact en Email -->
     <div class="d-flex align-items-stretch">
         <!-- Eerste blok: Contact -->
-        <div class="d-flex align-items-center" style="border-left: 1px solid #f4f4f4; border-right: 1px solid #f4f4f4; padding-left: 30px; padding-right: 30px; height: 100%;">
-            <span>CONTACT US: +3 (523) 555 123 8745</span>
+        <div class="d-flex align-items-center border-start border-end px-2" style="border-color: #f4f4f4;">
+            <span style="font-size: 10px">CONTACT US: +3 (523) 555 123 8745</span>
         </div>
         <!-- Tweede blok: Email -->
-        <div class="d-flex align-items-center" style="border-left: 1px solid #f4f4f4; border-right: 1px solid #f4f4f4; padding-left: 30px; padding-right: 30px; height: 100%;">
-            <span>EMAIL: OFFICE@EXZO.COM</span>
+        <div class="d-flex align-items-center border-start border-end px-2" style="border-color: #f4f4f4;">
+            <span style="font-size: 10px">EMAIL: OFFICE@EXZO.COM</span>
         </div>
     </div>
 
     <!-- Rechterkant: Login/Register, EN + Dropdown, Wishlist Icon, Your Bag -->
     <div class="d-flex align-items-stretch">
-        <!-- Eerste blok: Login or Register -->
-        <div class="d-flex align-items-center" style="border-left: 1px solid #f4f4f4; border-right: 1px solid #f4f4f4; padding-left: 30px; padding-right: 30px; height: 100%;">
-            <span>LOGIN OR REGISTER</span>
+        <!-- Eerste blok: Login/Register -->
+        <div class="d-flex align-items-center border-start border-end px-4" style="border-color: #f4f4f4;">
+            <span style="font-size: 10px">LOGIN OR REGISTER</span>
         </div>
         <!-- Tweede blok: EN + Dropdown Icon -->
-        <div class="d-flex align-items-center" style="border-left: 1px solid #f4f4f4; border-right: 1px solid #f4f4f4; padding-left: 30px; padding-right: 30px; height: 100%;">
-            <span>EN <i class="bi bi-chevron-down"></i></span>
+        <div class="d-flex align-items-center border-start border-end px-4" style="border-color: #f4f4f4;">
+            <span style="font-size: 10px">EN <i class="bi bi-chevron-down"></i></span>
         </div>
-        <!-- Derde blok: Wishlist Icon (Alleen icoon, geen tekst) -->
-        <div class="d-flex align-items-center" style="border-left: 1px solid #f4f4f4; border-right: 1px solid #f4f4f4; padding-left: 30px; padding-right: 30px; height: 100%;">
+        <!-- Derde blok: Wishlist Icon -->
+        <div class="d-flex align-items-center border-start border-end px-4" style="border-color: #f4f4f4;">
             <i class="bi bi-heart"></i>
         </div>
         <!-- Vierde blok: Your Bag -->
-        <div class="d-flex align-items-center" style="border-left: 1px solid #f4f4f4; border-right: 1px solid #f4f4f4; padding-left: 30px; padding-right: 30px; height: 100%;">
-            <span>YOUR BAG <i class="bi bi-bag"></i> <span style="color: green;">$1195.00</span></span>
+        <div class="d-flex align-items-center border-start border-end px-4" style="border-color: #f4f4f4;;">
+            <span style="font-size: 10px">YOUR BAG <i style="font-size: 18px" class="bi bi-bag"></i> <span style="font-size: 10px; color: green;">$1195.00</span></span>
         </div>
     </div>
 </div>
@@ -50,8 +50,10 @@
 
 
 
+
+
 <nav class="navbar navbar-expand-lg py-0" style="border-top: 2px solid #f4f4f4; border-bottom: 2px solid #f4f4f4;">
-    <div class="container-fluid d-flex align-items-center" style="height: 100px;">
+    <div class="container-fluid d-flex align-items-center">
         <!-- Logo met 50px marge vanaf links -->
         <a class="navbar-brand ms-5" href="#">
             <img src="./img/logo-2.png" alt="logo">
@@ -61,7 +63,7 @@
             <i class="bi bi-list toggle-icon fs-1"></i>
         </button>
         <!-- Navigatie met icon helemaal rechts -->
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse justify-content-end pb-4 pt-4" id="navbarSupportedContent">
             <ul class="navbar-nav d-flex align-items-center">
                 <!-- Navigatie-items -->
                 <li class="nav-item">
@@ -99,29 +101,192 @@
 </nav>
 
 
-<!--OFFCANVAS-->
-<button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-    Toggle Offcanvas
-</button>
 
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+
+
+
+<!-- Offcanvas -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="nr1" aria-labelledby="nr2">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+        <h5 class="offcanvas-title" id="nr2">Filters</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <p>Some text as placeholder. Add your own content here.</p>
+        <!-- Filters -->
+        <div class="filters">
+            <h5 style="font-size: 18px; color: #343434;">CATEGORIES</h5>
+            <div class="accordion accordion-flush" id="nr3">
+                <!-- Category Item 1 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="offcanvasnr1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#offcanvasnr2" aria-expanded="false" aria-controls="offcanvasnr2" style="background: none; color: #888888; font-size: 16px; line-height: 35px; border-bottom: 1px solid #888888;">
+                            LAPTOPS & COMPUTERS
+                        </button>
+                    </h2>
+                    <div id="offcanvasnr2" class="accordion-collapse collapse" aria-labelledby="offcanvasnr1" data-bs-parent="#offcanvasnr0">
+                        <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum!</div>
+                    </div>
+                </div>
+
+                <!-- Category Item 2 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="offcanvasnr3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#offcanvasnr4" aria-expanded="false" aria-controls="offcanvasnr4" style="background: none; color: #888888; font-size: 16px; line-height: 35px; border-bottom: 1px solid #888888;">
+                            VIDEO & PHOTO CAMERAS
+                        </button>
+                    </h2>
+                    <div id="offcanvasnr4" class="accordion-collapse collapse" aria-labelledby="offcanvasnr3" data-bs-parent="#offcanvasnr0">
+                        <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem!</div>
+                    </div>
+                </div>
+
+                <!-- Category Item 3 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="offcanvasnr5">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#offcanvasnr6" aria-expanded="false" aria-controls="offcanvasnr6" style="background: none; color: #888888; font-size: 16px; line-height: 35px; border-bottom: 1px solid #888888;">
+                            SMARTPHONES
+                        </button>
+                    </h2>
+                    <div id="offcanvasnr6" class="accordion-collapse collapse" aria-labelledby="offcanvasnr5" data-bs-parent="#offcanvasnr0">
+                        <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore?</div>
+                    </div>
+                </div>
+
+                <!-- Category Item 4 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="offcanvasnr7">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#offcanvasnr8" aria-expanded="false" aria-controls="offcanvasnr8" style="background: none; color: #888888; font-size: 16px; line-height: 35px; border-bottom: 1px solid #888888;">
+                            TV & AUDIO
+                        </button>
+                    </h2>
+                    <div id="offcanvasnr8" class="accordion-collapse collapse" aria-labelledby="offcanvasnr7" data-bs-parent="#offcanvasnr0">
+                        <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam.</div>
+                    </div>
+                </div>
+
+                <!-- Category Item 5 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="offcanvasnr9">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#offcanvasnr10" aria-expanded="false" aria-controls="offcanvasnr10" style="background: none; color: #a9cf38; font-size: 16px; line-height: 35px; border-bottom: 1px solid #888888;">
+                            GADGETS
+                        </button>
+                    </h2>
+                    <div id="offcanvasnr10" class="accordion-collapse collapse" aria-labelledby="offcanvasnr9" data-bs-parent="#offcanvasnr0">
+                        <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic.</div>
+                    </div>
+                </div>
+
+                <!-- Category Item 6 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="offcanvasnr11">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#offcanvasnr12" aria-expanded="false" aria-controls="offcanvasnr12" style="background: none; color: #888888; font-size: 16px; line-height: 35px; border-bottom: 1px solid #888888;">
+                            CAR ELECTRONICS
+                        </button>
+                    </h2>
+                    <div id="offcanvasnr12" class="accordion-collapse collapse" aria-labelledby="offcanvasnr11" data-bs-parent="#offcanvasnr0">
+                        <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim!</div>
+                    </div>
+                </div>
+
+                <!-- Category Item 7 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="offcanvasnr13">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#offcanvasnr14" aria-expanded="false" aria-controls="offcanvasnr14" style="background: none; color: #888888; font-size: 16px; line-height: 35px; border-bottom: 1px solid #888888;">
+                            VIDEO GAMES & CONSOLES
+                        </button>
+                    </h2>
+                    <div id="offcanvasnr14" class="accordion-collapse collapse" aria-labelledby="offcanvasnr13" data-bs-parent="#offcanvasnr0">
+                        <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis.</div>
+                    </div>
+                </div>
+
+                <!-- Category Item 8 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="offcanvasnr15">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#offcanvasnr16" aria-expanded="false" aria-controls="offcanvasnr16" style="background: none; color: #888888; font-size: 16px; line-height: 35px; border-bottom: 1px solid #888888;">
+                            SOFTWARE
+                        </button>
+                    </h2>
+                    <div id="offcanvasnr16" class="accordion-collapse collapse" aria-labelledby="offcanvasnr15" data-bs-parent="#offcanvasnr0">
+                        <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore!</div>
+                    </div>
+                </div>
+
+                <!-- Category Item 9 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="offcanvasnr17">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#offcanvasnr18" aria-expanded="false" aria-controls="offcanvasnr18" style="background: none; color: #888888; font-size: 16px; line-height: 35px; border-bottom: none;">
+                            ACCESSORIES
+                        </button>
+                    </h2>
+                    <div id="offcanvasnr18" class="accordion-collapse collapse" aria-labelledby="offcanvasnr17" data-bs-parent="#offcanvasnr0">
+                        <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse!</div>
+                    </div>
+                </div>
+
+
+                <!-- More Category Items (up to nr20, as needed) -->
+            </div>
+
+            <h5 class="mt-4" style="font-size: 14px">PRICE</h5>
+            <input type="range" class="form-range" style="background: #888888">
+            <p><span style="color: #888888">PRICE:</span>$40 - $300</p>
+
+            <h5 class="mt-4" style="font-size: 14px">BRANDS</h5>
+            <ul class="list-unstyled">
+                <li><input class="form-check-input me-2" type="checkbox" value="" id="nr21">LG</li>
+                <li><input class="form-check-input me-2" type="checkbox" value="" id="nr22">SAMSUNG</li>
+                <li><input class="form-check-input me-2" type="checkbox" value="" id="nr23">APPLE</li>
+                <li><input class="form-check-input me-2" type="checkbox" value="" id="nr24">HTC</li>
+                <li><input class="form-check-input me-2" type="checkbox" value="" id="nr25">GOOGLE</li>
+            </ul>
+
+            <h5 class="mt-4" style="font-size: 14px">CHOOSE COLOR</h5>
+            <div class="d-flex align-items-center gap-2">
+                <span class="rounded-0 d-block" style="background-color: #a7f050; width: 20px; height: 20px;"></span>
+                <span class="rounded-0 d-block" style="background-color: #50e3f0; width: 20px; height: 20px;"></span>
+                <span class="rounded-0 d-block" style="background-color: #eeeeee; width: 20px; height: 20px;"></span>
+                <span class="rounded-0 d-block" style="background-color: #4d900c; width: 20px; height: 20px;"></span>
+                <span class="rounded-0 d-block" style="background-color: #edb82c; width: 20px; height: 20px;"></span>
+                <span class="rounded-0 d-block" style="background-color: #7d3f99; width: 20px; height: 20px;"></span>
+                <span class="rounded-0 d-block" style="background-color: #3481c7; width: 20px; height: 20px;"></span>
+                <div class="d-flex align-items-center justify-content-center border border-2 border-danger" style="width: 30px; height: 30px;">
+                    <span class="rounded-0 d-block" style="background-color: #bf584b; width: 20px; height: 20px;"></span>
+                </div>
+            </div>
+
+            <h5 class="mt-4" style="font-size: 14px">OPERATION SYSTEM</h5>
+            <ul class="list-unstyled">
+                <li><input class="form-check-input me-2" type="checkbox" value="" id="offcanvasnr19">ANDROID</li>
+                <li><input class="form-check-input me-2" type="checkbox" value="" id="offcanvasnr20">IOS</li>
+                <li><input class="form-check-input me-2" type="checkbox" value="" id="offcanvasn21">WINDOWS PHONE</li>
+                <li><input class="form-check-input me-2" type="checkbox" value="" id="offcanvasnr22">SYMBIAN</li>
+                <li><input class="form-check-input me-2" type="checkbox" value="" id="offcanvasnr23">BLACKBERRY OS</li>
+            </ul>
+
+            <h5 class="mt-4" style="font-size: 14px">Popular Tags</h5>
+            <div class="d-flex flex-wrap gap-2">
+                <span class="badge bg-secondary rounded-pill" style="font-size: 10px; padding: 7px 14px;">HEADPHONESS</span>
+                <span class="badge bg-secondary rounded-pill" style="font-size: 10px; padding: 7px 14px;">ACCESSORIES</span>
+                <span class="badge bg-secondary rounded-pill" style="font-size: 10px; padding: 7px 14px;">NEW</span>
+                <span class="badge bg-secondary rounded-pill" style="font-size: 10px; padding: 7px 14px;">WIRELESS</span>
+                <span class="badge bg-secondary rounded-pill" style="font-size: 10px; padding: 7px 14px;">CABELS</span>
+                <span class="badge bg-secondary rounded-pill" style="font-size: 10px; padding: 7px 14px;">DEVICES</span>
+                <span class="badge bg-secondary rounded-pill" style="font-size: 10px; padding: 7px 14px;">GADGETS</span>
+                <span class="badge bg-secondary rounded-pill" style="font-size: 10px; padding: 7px 14px;">BRANDS</span>
+                <span class="badge bg-secondary rounded-pill" style="font-size: 10px; padding: 7px 14px;">REPLACEMENTS</span>
+                <!-- Additional tags can be added here -->
+            </div>
+        </div>
     </div>
 </div>
-
-
 
 
 <!-- Main Content -->
 <div class="container-fluid mt-4">
     <!--section hero-->
     <div>
-        <div class="row mt-3 mb-5 pb-5">
+        <div class="row mt-3 mb-0 pb-3 mb-md-5 pb-md-5">
             <div class="col-12 col-lg-8 offset-lg-2 icon-divider">
                 <span>Home</span>
                 <i class="bi bi-chevron-right"></i>
@@ -134,7 +299,13 @@
         </div>
     </div>
 
-    <div class="col-12 col-lg-8 offset-lg-2">
+    <!-- Offcanvas -->
+    <!-- Button to trigger offcanvas -->
+    <button class="btn btn-outline-secondary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#nr1" aria-controls="nr1">
+        Filter
+    </button>
+
+    <div class="col-12 col-lg-8 offset-lg-2 pt-3">
         <div class="row">
             <!-- Sidebar: Filters -->
             <div class="col-12 col-lg-3 d-none d-lg-block">
@@ -142,97 +313,132 @@
                     <h5 style="font-size: 18px; color: #343434;">CATEGORIES</h5>
 
                     <div class="accordion accordion-flush" id="categoriesAccordion">
-                        <!-- Category Item -->
+                        <!-- Category Item 1 -->
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingLaptops">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseLaptops" aria-expanded="false" aria-controls="flush-collapseLaptops" style="background: none; color: #888888; font-size: 16px; line-height: 35px; border-bottom: 1px solid #888888;">
                                     LAPTOPS & COMPUTERS
                                 </button>
                             </h2>
+                            <div id="flush-collapseLaptops" class="accordion-collapse collapse" aria-labelledby="flush-headingLaptops" data-bs-parent="#categoriesAccordion">
+                                <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum!</div>
+                            </div>
                         </div>
 
+                        <!-- Category Item 2 -->
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingCameras">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseCameras" aria-expanded="false" aria-controls="flush-collapseCameras" style="background: none; color: #888888; font-size: 16px; line-height: 35px; border-bottom: 1px solid #888888;">
                                     VIDEO & PHOTO CAMERAS
                                 </button>
                             </h2>
+                            <div id="flush-collapseCameras" class="accordion-collapse collapse" aria-labelledby="flush-headingCameras" data-bs-parent="#categoriesAccordion">
+                                <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem!</div>
+                            </div>
                         </div>
 
+                        <!-- Category Item 3 -->
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingSmartphones">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSmartphones" aria-expanded="false" aria-controls="flush-collapseSmartphones" style="background: none; color: #888888; font-size: 16px; line-height: 35px; border-bottom: 1px solid #888888;">
                                     SMARTPHONES
                                 </button>
                             </h2>
+                            <div id="flush-collapseSmartphones" class="accordion-collapse collapse" aria-labelledby="flush-headingSmartphones" data-bs-parent="#categoriesAccordion">
+                                <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore?</div>
+                            </div>
                         </div>
 
+                        <!-- Category Item 4 -->
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingTV">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTV" aria-expanded="false" aria-controls="flush-collapseTV" style="background: none; color: #888888; font-size: 16px; line-height: 35px; border-bottom: 1px solid #888888;">
                                     TV & AUDIO
                                 </button>
                             </h2>
+                            <div id="flush-collapseTV" class="accordion-collapse collapse" aria-labelledby="flush-headingTV" data-bs-parent="#categoriesAccordion">
+                                <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam.</div>
+                            </div>
                         </div>
 
+                        <!-- Category Item 5 -->
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingGadgets">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseGadgets" aria-expanded="false" aria-controls="flush-collapseGadgets" style="background: none; color: #a9cf38; font-size: 16px; line-height: 35px; border-bottom: 1px solid #888888;">
                                     GADGETS
                                 </button>
                             </h2>
+                            <div id="flush-collapseGadgets" class="accordion-collapse collapse" aria-labelledby="flush-headingGadgets" data-bs-parent="#categoriesAccordion">
+                                <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic.</div>
+                            </div>
                         </div>
 
+                        <!-- Category Item 6 -->
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingCarElectronics">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseCarElectronics" aria-expanded="false" aria-controls="flush-collapseCarElectronics" style="background: none; color: #888888; font-size: 16px; line-height: 35px; border-bottom: 1px solid #888888;">
                                     CAR ELECTRONICS
                                 </button>
                             </h2>
+                            <div id="flush-collapseCarElectronics" class="accordion-collapse collapse" aria-labelledby="flush-headingCarElectronics" data-bs-parent="#categoriesAccordion">
+                                <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim!</div>
+                            </div>
                         </div>
 
+                        <!-- Category Item 7 -->
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingVideoGames">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseVideoGames" aria-expanded="false" aria-controls="flush-collapseVideoGames" style="background: none; color: #888888; font-size: 16px; line-height: 35px; border-bottom: 1px solid #888888;">
                                     VIDEO GAMES & CONSOLES
                                 </button>
                             </h2>
+                            <div id="flush-collapseVideoGames" class="accordion-collapse collapse" aria-labelledby="flush-headingVideoGames" data-bs-parent="#categoriesAccordion">
+                                <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis.</div>
+                            </div>
                         </div>
 
+                        <!-- Category Item 8 -->
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingSoftware">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSoftware" aria-expanded="false" aria-controls="flush-collapseSoftware" style="background: none; color: #888888; font-size: 16px; line-height: 35px; border-bottom: 1px solid #888888;">
                                     SOFTWARE
                                 </button>
                             </h2>
+                            <div id="flush-collapseSoftware" class="accordion-collapse collapse" aria-labelledby="flush-headingSoftware" data-bs-parent="#categoriesAccordion">
+                                <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore!</div>
+                            </div>
                         </div>
 
+                        <!-- Category Item 9 -->
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingAccessories">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseAccessories" aria-expanded="false" aria-controls="flush-collapseAccessories" style="background: none; color: #888888; font-size: 16px; line-height: 35px; border-bottom: none;">
                                     ACCESSORIES
                                 </button>
                             </h2>
+                            <div id="flush-collapseAccessories" class="accordion-collapse collapse" aria-labelledby="flush-headingAccessories" data-bs-parent="#categoriesAccordion">
+                                <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse!</div>
+                            </div>
                         </div>
-
                     </div>
 
 
-                    <h5 class="mt-4">PRICE</h5>
+
+                    <h5 class="mt-4" style="font-size: 14px">PRICE</h5>
                     <input type="range" class="form-range" style="background: #888888">
                     <p><span style="color: #888888">PRICE:</span>$40 - $300</p>
 
-                    <h5 class="mt-4">BRANDS</h5>
+                    <h5 class="mt-4" style="font-size: 14px">BRANDS</h5>
                     <ul class="list-unstyled">
-                        <li><input class="form-check-input" type="checkbox" value="" id="defaultCheck1">LG</li>
-                        <li><input class="form-check-input" type="checkbox" value="" id="defaultCheck2">SAMSUNG</li>
-                        <li><input class="form-check-input" type="checkbox" value="" id="defaultCheck3">APPLE</li>
-                        <li><input class="form-check-input" type="checkbox" value="" id="defaultCheck4">HTC</li>
-                        <li><input class="form-check-input" type="checkbox" value="" id="defaultCheck5">GOOGLE</li>
+                        <li><input class="form-check-input me-2" type="checkbox" value="" id="defaultCheck1">LG</li>
+                        <li><input class="form-check-input me-2" type="checkbox" value="" id="defaultCheck2">SAMSUNG</li>
+                        <li><input class="form-check-input me-2" type="checkbox" value="" id="defaultCheck3">APPLE</li>
+                        <li><input class="form-check-input me-2" type="checkbox" value="" id="defaultCheck4">HTC</li>
+                        <li><input class="form-check-input me-2" type="checkbox" value="" id="defaultCheck5">GOOGLE</li>
                     </ul>
 
-                    <h5 class="mt-4">CHOOSE COLOR</h5>
-                    <div class="d-flex gap-2">
+                    <h5 class="mt-4" style="font-size: 14px">CHOOSE COLOR</h5>
+                    <div class="d-flex align-items-center gap-2">
                         <span class="rounded-0 d-block" style="background-color: #a7f050; width: 20px; height: 20px;"></span>
                         <span class="rounded-0 d-block" style="background-color: #50e3f0; width: 20px; height: 20px;"></span>
                         <span class="rounded-0 d-block" style="background-color: #eeeeee; width: 20px; height: 20px;"></span>
@@ -240,19 +446,24 @@
                         <span class="rounded-0 d-block" style="background-color: #edb82c; width: 20px; height: 20px;"></span>
                         <span class="rounded-0 d-block" style="background-color: #7d3f99; width: 20px; height: 20px;"></span>
                         <span class="rounded-0 d-block" style="background-color: #3481c7; width: 20px; height: 20px;"></span>
-                        <span class="rounded-0 d-block" style="background-color: #bf584b; width: 20px; height: 20px;"></span>
+                        <div class="d-flex align-items-center justify-content-center border border-2 border-danger"
+                             style="width: 30px; height: 30px;">
+                            <span class="rounded-0 d-block" style="background-color: #bf584b; width: 20px; height: 20px;"></span>
+                        </div>
+
                     </div>
 
-                    <h5 class="mt-4">OPERATION SYSTEM</h5>
+                    <h5 class="mt-4" style="font-size: 14px">OPERATION SYSTEM</h5>
                     <ul class="list-unstyled">
-                        <li><input class="form-check-input" type="checkbox" value="" id="defaultCheck6">ANDROID</li>
-                        <li><input class="form-check-input" type="checkbox" value="" id="defaultCheck7">IOS</li>
-                        <li><input class="form-check-input" type="checkbox" value="" id="defaultCheck8">WINDOWS PHONE</li>
-                        <li><input class="form-check-input" type="checkbox" value="" id="defaultCheck9">SYMBIAN</li>
-                        <li><input class="form-check-input" type="checkbox" value="" id="defaultCheck10">BLECKBERRY OS</li>
-                    </ul>
+                    <li><input class="form-check-input me-2" type="checkbox" value="" id="defaultCheck6">ANDROID</li>
+                    <li><input class="form-check-input me-2" type="checkbox" value="" id="defaultCheck7">IOS</li>
+                    <li><input class="form-check-input me-2" type="checkbox" value="" id="defaultCheck8">WINDOWS PHONE</li>
+                    <li><input class="form-check-input me-2" type="checkbox" value="" id="defaultCheck9">SYMBIAN</li>
+                    <li><input class="form-check-input me-2" type="checkbox" value="" id="defaultCheck10">BLACKBERRY OS</li>
+                </ul>
 
-                    <h5 class="mt-4">Popular Tags</h5>
+
+                    <h5 class="mt-4" style="font-size: 14px">Popular Tags</h5>
                     <div class="d-flex flex-wrap gap-2">
                         <span class="badge bg-secondary rounded-pill" style="font-size: 10px; padding: 7px 14px;">HEADPHONESS</span>
                         <span class="badge bg-secondary rounded-pill" style="font-size: 10px; padding: 7px 14px;">ACCESSORIES</span>
@@ -272,9 +483,10 @@
                 <!-- Featured Image -->
                 <div id="carouselExampleCaptions" class="carousel slide mb-4" data-bs-ride="carousel">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button style="width: 25px; height: 20px;" class="rounded-circle border-4 border-secondary-subtle bg-transparent" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button style="width: 25px; height: 20px;" class="rounded-circle border-4 border-success bg-transparent" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button style="width: 25px; height: 20px;" class="rounded-circle border-4 border-secondary-subtle bg-transparent" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button style="width: 25px; height: 20px;" class="rounded-circle border-4 border-secondary-subtle bg-transparent" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -327,37 +539,37 @@
                         <h5 class="mt-2" style="color: #a9cf38;">ACESSOIRIES</h5>
                         <h6>GROOVE WATER BOTTLE</h6>
                         <img src="https://via.placeholder.com/300" alt="Product 2" class="img-fluid">
-                        <h6 class="mt-2">$225.00</h6>
+                        <h6 class="mt-2">$45.00</h6>
                         <p style="color: #888888;">Mollis nec consequat at in feugiat male site fortor a malesuada</p>
                     </div>
                     <div class="col-md-4 product">
                         <h5 class="mt-2" style="color: #a9cf38;">FITNESS TRACKER</h5>
                         <h6>FLEX FITNESS TRACKER</h6>
                         <img src="https://via.placeholder.com/300" alt="Product 3" class="img-fluid">
-                        <h6 class="mt-2">$110.00</h6>
+                        <h6 class="mt-2">$55.00</h6>
                         <p style="color: #888888;">Mollis nec consequat at in feugiat male site fortor a malesuada</p>
                     </div>
 
                     <!-- Thirdline Product -->
                     <div class="col-md-4 product">
-                        <h5 class="mt-2" style="color: #a9cf38;">ACCESSOIRES</h5>
-                        <h6>GOLFSENSE</h6>
+                        <h5 class="mt-2" style="color: #a9cf38;">FITNESS TRACKER</h5>
+                        <h6>TRACKER MOOV X</h6>
                         <img src="https://via.placeholder.com/300" alt="Product 1" class="img-fluid">
-                        <h6 class="mt-2">$129.00</h6>
-                        <p style="color: #888888;">Mollis nec consequat at in feugiat male site fortor a malesuada</p>
-                    </div>
-                    <div class="col-md-4 product">
-                        <h5 class="mt-2" style="color: #a9cf38;">SMART WATCHES</h5>
-                        <h6>WATCH 42MM SMARTWATCH</h6>
-                        <img src="https://via.placeholder.com/300" alt="Product 2" class="img-fluid">
-                        <h6 class="mt-2">$225.00</h6>
+                        <h6 class="mt-2">$63.00</h6>
                         <p style="color: #888888;">Mollis nec consequat at in feugiat male site fortor a malesuada</p>
                     </div>
                     <div class="col-md-4 product">
                         <h5 class="mt-2" style="color: #a9cf38;">HEADPHONES</h5>
-                        <h6>FITNESS HEADPHONES INSPIRE</h6>
+                        <h6>FITNESS HEADPHONES</h6>
+                        <img src="https://via.placeholder.com/300" alt="Product 2" class="img-fluid">
+                        <h6 class="mt-2">$95.00</h6>
+                        <p style="color: #888888;">Mollis nec consequat at in feugiat male site fortor a malesuada</p>
+                    </div>
+                    <div class="col-md-4 product">
+                        <h5 class="mt-2" style="color: #a9cf38;">FITNESS TRACKER</h5>
+                        <h6>SMART BRACELET</h6>
                         <img src="https://via.placeholder.com/300" alt="Product 3" class="img-fluid">
-                        <h6 class="mt-2">$110.00</h6>
+                        <h6 class="mt-2">$74.00</h6>
                         <p style="color: #888888;">Mollis nec consequat at in feugiat male site fortor a malesuada</p>
                     </div>
 
@@ -367,9 +579,9 @@
 
                 <!-- Pagination -->
                 <div aria-label="...">
-                    <ul class="pagination pagination-lg d-flex justify-content-between align-items-center">
+                    <ul class="pagination pagination-lg d-flex flex-wrap justify-content-center justify-content-lg-between align-items-center">
                         <!-- Prev Button -->
-                        <li class="page-item">
+                        <li class="page-item mb-2 mb-lg-0">
                             <button
                                     class="page-link text-muted d-flex align-items-center justify-content-center"
                                     style="font-size: 11px; width: 120px; height: 40px; border-radius: 50px; border-color: #dddddd;">
@@ -378,27 +590,27 @@
                         </li>
 
                         <!-- Page Numbers -->
-                        <div class="d-flex">
+                        <div class="d-flex flex-wrap justify-content-center mb-2 mb-lg-0">
                             <!-- Paginanummer 1 (actieve pagina) -->
-                            <li class="page-item active" aria-current="page" style="margin-right: 8px;">
+                            <li class="page-item active" aria-current="page" style="margin-right: 8px; margin-bottom: 8px;">
                                 <span class="page-link d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; font-size: 11px; background-color: #a9cf38; border-color: #a9cf38; color: white; border-radius: 5px;">1</span>
                             </li>
                             <!-- Paginanummers -->
-                            <li class="page-item" style="margin-right: 8px;">
+                            <li class="page-item" style="margin-right: 8px; margin-bottom: 8px;">
                                 <a class="page-link d-flex align-items-center justify-content-center text-dark"
                                    href="#"
                                    style="width: 40px; height: 40px; font-size: 11px; border-radius: 5px;">
                                     2
                                 </a>
                             </li>
-                            <li class="page-item" style="margin-right: 8px;">
+                            <li class="page-item" style="margin-right: 8px; margin-bottom: 8px;">
                                 <a class="page-link d-flex align-items-center justify-content-center text-dark"
                                    href="#"
                                    style="width: 40px; height: 40px; font-size: 11px; border-radius: 5px;">
                                     3
                                 </a>
                             </li>
-                            <li class="page-item" style="margin-right: 8px;">
+                            <li class="page-item" style="margin-right: 8px; margin-bottom: 8px;">
                                 <a class="page-link d-flex align-items-center justify-content-center text-dark"
                                    href="#"
                                    style="width: 40px; height: 40px; font-size: 11px; border-radius: 5px;">
@@ -406,7 +618,7 @@
                                 </a>
                             </li>
                             <!-- Geen borders voor "..." -->
-                            <li class="page-item" style="margin-right: 8px;">
+                            <li class="page-item" style="margin-right: 8px; margin-bottom: 8px;">
                                 <a class="page-link text-dark"
                                    href="#"
                                    style="font-size: 11px; border: none; background-color: transparent; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
@@ -414,7 +626,7 @@
                                 </a>
                             </li>
                             <!-- Laatste paginanummer -->
-                            <li class="page-item">
+                            <li class="page-item" style="margin-bottom: 8px;">
                                 <a class="page-link d-flex align-items-center justify-content-center text-dark"
                                    href="#"
                                    style="width: 40px; height: 40px; font-size: 11px; border-radius: 5px;">
@@ -422,7 +634,6 @@
                                 </a>
                             </li>
                         </div>
-
 
                         <!-- Next Button -->
                         <li class="page-item">
@@ -434,6 +645,7 @@
                         </li>
                     </ul>
                 </div>
+
             </div>
         </div>
     </div>
@@ -567,11 +779,11 @@
 </div>
 
 
+
 <!--banner-->
-<!--banner-->
-<div class="container-fluid mb-0 pb-0 pt-0" style="background-color: #b8cd07; height: 130px;">
-    <div class="row h-100">
-        <div class="col-12 col-lg-8 offset-lg-2 d-flex align-items-center justify-content-between flex-wrap flex-lg-nowrap">
+<div class="container-fluid mb-0 pb-0 pt-0" style="background-color: #b8cd07;">
+    <div class="row">
+        <div class="col-12 col-lg-8 offset-lg-2 d-flex align-items-center justify-content-between flex-wrap flex-lg-nowrap py-5">
             <!-- Titel -->
             <div class="text-center text-lg-start mb-3 mb-lg-0">
                 <h1 class="text-white fw-bold fs-4 fs-lg-2">DONT MISS YOUR CHANCE</h1>
